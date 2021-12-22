@@ -19,7 +19,8 @@ export class DogsService {
 
   findOneDog(id: number): any {
     const dog = this.dogs.find((dog) => dog.id === id);
-    return dog;
+
+    return dog ? dog : { message: 'Dog not found' };
   }
 
   create(dog: any): any {
