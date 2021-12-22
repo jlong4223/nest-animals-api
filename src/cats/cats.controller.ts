@@ -5,11 +5,6 @@ import { CatsService } from './cats.service';
 @Controller('cats')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
-  // @Get()
-  // findAll(@Req() request: Request, @Res() response: Response): any {
-  //   // return 'This action returns all cats';
-  //   return response.json({ tada: 'This action returns all cats' });
-  // }
 
   @Get()
   findAll(@Req() request: Request, @Res() response: Response): any {
