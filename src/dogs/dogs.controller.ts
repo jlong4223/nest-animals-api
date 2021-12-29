@@ -19,7 +19,7 @@ export class DogsController {
   @HttpCode(200)
   @Header('Cache-Control', 'no-cache')
   create(@Req() request: Request, @Res() response: Response): any {
-    this.dogsService.create({ ...request.body, createdAt: new Date() });
+    this.dogsService.create(request.body);
 
     return response.json({
       message: 'Created dog',
