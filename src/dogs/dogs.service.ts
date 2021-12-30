@@ -6,7 +6,6 @@ import { InjectModel } from '@nestjs/mongoose';
 interface Dog extends Document {
   readonly name: string;
   readonly age: number;
-  readonly createdAt: Date;
 }
 
 @Injectable()
