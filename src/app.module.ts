@@ -1,13 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DogsController } from './dogs/dogs.controller';
-import { CatsController } from './cats/cats.controller';
-import { CatsService } from './cats/cats.service';
-import { DogsService } from './dogs/dogs.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { DogsModule } from './dogs/dogs.module';
+import { CatsModule } from './cats/cats.module';
+import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from '@nestjs/config';
+
 @Module({
-  imports: [],
-  controllers: [AppController, DogsController, CatsController],
-  providers: [AppService, CatsService, DogsService],
+  imports: [
+    ConfigModule.forRoot(),
+    DogsModule,
+    CatsModule,
+    DatabaseModule,
+    MongooseModule.forRoot(process.env.MONGO_URI),
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
